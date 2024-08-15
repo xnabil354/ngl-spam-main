@@ -123,7 +123,7 @@ const NglSpamForm: React.FC = () => {
         </button>
       </form>
       {showPopup && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md z-50">
+        <div className="mt-4 p-4 bg-green-500 text-white rounded-md text-sm overflow-auto max-h-24">
           {responseData?.message}
           {responseData?.data && <pre>{JSON.stringify(responseData.data, null, 2)}</pre>}
         </div>
