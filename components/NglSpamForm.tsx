@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useState } from 'react';
 
@@ -85,12 +85,11 @@ const NglSpamForm = () => {
           <input
             type="number"
             id="count"
+            name="count"
             value={count}
-            onChange={(e) => setCount(Number(e.target.value))}
-            placeholder="1"
+            onChange={(e) => setCount(Math.max(1, parseInt(e.target.value)))}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             min="1"
-            max="100"
-            className="mt-1 block w-full px-4 py-3 rounded-full shadow-sm border border-gray-300 focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
             required
           />
         </div>
