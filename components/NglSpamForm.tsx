@@ -50,11 +50,11 @@ const NglSpamForm: React.FC = () => {
     for (let i = 0; i < limitedCount; i++) { 
       try {
         const data = await sendNgl();
-        setResponseData({ message: `Spam ke-${i + 1} berhasil dikirim.`, data });
+        setResponseData({ message: `Spam ke-${i + 1} berhasil dikirim.` });
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 5000);
       } catch (error) {
-        setResponseData({ message: `Error pada Spam ke-${i + 1}`, error });
+        setResponseData({ message: `Error pada Spam ke-${i + 1}` });
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 5000);
       }
