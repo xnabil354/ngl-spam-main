@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const NglSpamForm = () => {
-  const [username, setUsername] = useState('');
-  const [question, setQuestion] = useState('');
+  const [username, setUsername] = useState("");
+  const [question, setQuestion] = useState("");
   const [count, setCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [responseData, setResponseData] = useState<{ message: string, data?: any } | null>(null);
+  const [responseData, setResponseData] = useState<{ message: string; data?: any } | null>(null);
 
   const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -24,6 +24,7 @@ const NglSpamForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true); // Show loading spinner
+
     const limitedCount = Math.min(count, 100);
 
     for (let i = 0; i < limitedCount; i++) {
@@ -42,8 +43,8 @@ const NglSpamForm = () => {
     }
 
     setIsLoading(false); // Hide loading spinner
-    setUsername('');
-    setQuestion('');
+    setUsername("");
+    setQuestion("");
     setCount(1); // Reset form fields
   };
 
@@ -66,14 +67,14 @@ const NglSpamForm = () => {
         </div>
         <div>
           <label htmlFor="question" className="block text-sm font-medium text-gray-700">
-            Question Target
+            Message Target
           </label>
           <input
             type="text"
             id="question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Masukkan Question Anda"
+            placeholder="Masukkan Message Anda"
             className="mt-1 block w-full px-4 py-3 rounded-full shadow-sm border border-gray-300 focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
             required
           />
@@ -96,7 +97,8 @@ const NglSpamForm = () => {
         <div className="pt-4">
           <button
             type="submit"
-            className="inline-flex justify-center py-3 px-6 border border-transparent shadow-lg text-sm font-bold rounded-full text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-yellow-500 hover:via-red-500 hover:to-pink-500 transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            disabled={isLoading}
+            className={`inline-flex justify-center py-3 px-6 border border-transparent shadow-lg text-sm font-bold rounded-full text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-yellow-500 hover:via-red-500 hover:to-pink-500 transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             {isLoading ? (
               <svg
