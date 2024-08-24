@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import axios from "axios";
 
 const NglSpamForm = () => {
   const [username, setUsername] = useState("");
@@ -12,8 +13,28 @@ const NglSpamForm = () => {
 
   const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+  function generateDeviceID(): string {
+    const characters = "qwertyuiopasdfghjklzxcvbnm1234567890";
+    const randomStr = Array.from({ length: 8 }, () => 
+        characters.charAt(Math.floor(Math.random() * characters.length))
+    ).join("");
+
+    return `${randomStr}-f7d8-4ee2-b6e1-5d0fb2bb88d3`;
+  }
+
   const sendNgl = async () => {
-    // Replace this with your actual API call logic
+    try {
+      const response = await axios.post('/api/spam-ngl', {
+        username,
+        question,
+        deviceId: generateDeviceID(),
+        gameSlug: "",
+        referrer: ""
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({ success: true });
