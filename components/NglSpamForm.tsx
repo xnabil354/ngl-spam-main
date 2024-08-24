@@ -35,11 +35,6 @@ const NglSpamForm = () => {
     } catch (error) {
       throw error;
     }
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ success: true });
-      }, 1000);
-    });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
